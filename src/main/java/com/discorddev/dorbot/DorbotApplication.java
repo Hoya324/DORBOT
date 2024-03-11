@@ -9,8 +9,8 @@ import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 
-import com.discorddev.dorbot.util.DiscordBotToken;
-import com.discorddev.dorbot.util.DorbotDiscordListener;
+import com.discorddev.dorbot.discord.token.DiscordBotToken;
+import com.discorddev.dorbot.discord.listener.DorbotDiscordListener;
 
 @SpringBootApplication
 public class DorbotApplication {

@@ -1,4 +1,6 @@
-package com.discorddev.dorbot.util;
+package com.discorddev.dorbot.discord.listener;
+
+import java.util.List;
 
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.User;
@@ -22,8 +24,17 @@ public class DorbotDiscordListener extends ListenerAdapter {
 
 		if (user.isBot()) {
 			return;
+		} else if (message.getContentDisplay().equals("")) {
+			log.info("디스코드 Message 문자열 값 공백");
 		}
 
-		log.info("디스코드 문자열 message 문자열 값 공백");
+		List<String> resultList = CheckDiscordCommand.checkCommand(event, message.getContentDisplay().split(" "));
+
+		if (resultList.isEmpty()) {
+			log.info("처리 결과 값 공백");
+		}
+
+		createSendMessage(event, resultList.get(0), Objects.requireNonNull(resultList.get(1)));
 	}
+
 }
